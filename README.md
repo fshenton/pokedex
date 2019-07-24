@@ -1,5 +1,7 @@
 # pokedex
 
+Live page (WIP): [Pokedex](https://fshenton.github.io/pokedex/)
+
 I have been set a challenge by the beautiful and illustrious [Pookage](https://github.com/pookage), the brief of which is as follows:
 
 > A desktop-first web-app that provides information about a number of gen-1 pokémon; functioning
