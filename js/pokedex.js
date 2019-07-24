@@ -4,46 +4,48 @@ window.addEventListener("DOMContentLoaded", init);
 
 class Pokemon {
 	constructor(id, name, image, types, weight, height, description){
-		this.id = id;
-		this.name = name;
-		this.image = image;
-		this.types = types;
-		this.weight = weight;
-		this.height = height;
-		this.description = description;
+		this.id 			= id;
+		this.name 			= name;
+		this.image 			= image;
+		this.types 			= types;
+		this.weight 		= weight;
+		this.height 		= height;
+		this.description 	= description;
 	}
-	// unclear if getters are really need, don't like things being so easy to change though (can't const the vars!)
-
-	// get id(){ return this.id; } 
-	// get name(){ return this.name; } 
-	// get image(){ return this.image; } 
-	// get types(){ return this.types; } 
-	// get weight(){ return this.weight; } 
-	// get height(){ return this.height; } 
-	// get description(){ return this.description; } 
+	//TODO: update details function
+	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 }
 
-const pokemans = new Map();
-
+const state = {
+	listButtons: undefined, //probs not needed?
+	pokemans: undefined,
+	image: undefined
+}
 
 function init(){
-	console.log("It's working!");
 
-	const listElements = document.getElementsByTagName("li");
+	const listButtons = state.listButtons = document.getElementsByClassName("list button");
+	//TODO: grab img, pokemon details etc
 
+	//using a map for future proofing (when using all 151 pokemon)
+	const pokemans = state.pokemans = new Map();
 	addPokemans(pokemans);
 
-	console.log(pokemans);
+	//for every li button (entry in pokedex), grab the id and 
+	//grab the pokemon with that id from pokemans
+	for(listButton of listButtons){
+		let key = listButton.dataset.id;
+		listButton.innerText = pokemans.get(key).name;
+	}
 
-
-
-}
+	console.log(state);
+}//init
 
 function addPokemans(map){
-	
+
 	let bulbasaur, charmander, squirtle, pikachu;
 
-	//future change to store all pokemon details in external JSON file would be nice
+	//TODO: future change to store all pokemon details in external JSON file would be nice
 	bulbasaur = new Pokemon("001", "Bulbasaur", "assets/images/Bulbasaur.png", ["Grass", "Poison"], 0.7, 6.9, 
 		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.");
 
@@ -61,7 +63,8 @@ function addPokemans(map){
 	map.set(charmander.id, charmander);
 	map.set(squirtle.id, squirtle);
 	map.set(pikachu.id, pikachu);
-}
+
+}//addPokemans
 
 
 //state
