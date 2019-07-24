@@ -3,25 +3,25 @@ Bulbasaur
 Grass/Poison
 0.7m
 6.9kg
-<description>
+Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.
 
 007
 Squirtle
 Water
 0.5m
 9.0kg
-<description>
+Squirtle is a small Pokémon that resembles a light blue turtle. 
 
 004
 Charmander
 Fire
 0.6m
 8.5kg
-<description>
+Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.
 
 025
 Pikachu
 Electric
 0.4m
 6.0kg
-<description>
+Pikachu is a short, chubby rodent Pokémon.
