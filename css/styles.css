@@ -1,32 +1,69 @@
 
-
-/*dt, dd {
-	display: inline-block;
-}*/
+html {
+	background-color: var(--color__bg);
+}
 
 .pokedex {
 	display: inline-flex;
+    width: 1000px;
+    height: 500px;
+    padding: 10px;
 }
 
 .glossary,
 .details {
-	flex: 1 0 50%;
+	flex: 1 0 500px;
 }
+
+header {
+	text-align: center;
+	color: var(--color__action);
+}
+
+/* GLOSSARY --------------- */
+
+.glossary {
+	background-color: var(--color__accent);
+}
+
+.glossary>ul {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	list-style-type: none;
+}
+
+.glossentry>button{
+	background-color: var(--color__action);
+	font-size: 2em;
+}
+    
+/* DETAILS --------------- */
 
 .details {
 	display: grid;
 	grid-template-areas: 
 						"image desclist" 
 						"description description";
-	grid-template-rows: 
+	grid-template-columns: 250px;
+	grid-template-rows: 250px;
+	background-color: var(--color__accent);
 }
+
+.image {
+	grid-area: image;
+	padding-top: 1em;
+	padding-left: 1em;
+}	
 
 .desclist {
 	display: grid;
 	grid-area: desclist;
 	grid-template-areas: "dt dd";
-	padding-left: 1em;
 	padding-top: 1em;
+	padding-left: 1em;
 }
 
 dt::after {
@@ -37,31 +74,13 @@ dd {
 	padding-left: 1em;
 }
 
-.image {
-	grid-area: image;
-}	
-
-/*.id {
-	grid-area: "id";
+dd, 
+dt {
+	padding-top: 1em;
 }
-
-.name {
-	grid-area: "name";
-}
-
-.type {
-	grid-area: "type";
-}	
-
-.weight {
-	grid-area: "weight";
-}
-
-.height {
-	grid-area: "height";
-} */
 
 .description {
 	grid-area: description;
-	padding-top: 1em;
+	padding-top: 2em;
+	padding-left: 1em;
 }
