@@ -48,8 +48,9 @@ html {
 }
 
 .glossentry>button{
-	background-color: var(--color__action);
+	padding: 0.62em;
 	font-size: 2em;
+	background-color: var(--color__action);
 }
     
 /* DETAILS --------------- */
@@ -66,8 +67,7 @@ html {
 
 .image {
 	grid-area: image;
-	/*padding-top: 1em;
-	padding-left: 1em;*/
+	padding-top: 0.62em;
 }	
 
 .desclist {
