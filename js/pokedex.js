@@ -41,7 +41,7 @@ function init(){
 	state.type 		= document.getElementById("typefield");
 	state.weight 	= document.getElementById("weightfield");
 	state.height 	= document.getElementById("heightfield");
-	state.desc 		= document.getElementById("descriptionfield");
+	state.desc 		= document.getElementById("descfield");
 
 	const listButtons 	= state.listButtons = document.getElementsByClassName("list button");
 
@@ -106,18 +106,3 @@ function updateCurrDetails(event, key){
 		console.log("Must be using an invalid key? " + e);
 	}
 }
-
-//state
-//const list, img, info, description
-//pokemans
-
-//class definition
-//id, name, type, weight, height, image
-
-//init
-//grab all of the dom objects and assign them to state
-//fill the pokemans map
-//add id and name to li elements for each pokemon
-
-//add event listeners to all lis -> show info
-// 

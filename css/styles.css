@@ -66,8 +66,8 @@ html {
 
 .image {
 	grid-area: image;
-	padding-top: 1em;
-	padding-left: 1em;
+	/*padding-top: 1em;
+	padding-left: 1em;*/
 }	
 
 .desclist {
@@ -91,7 +91,7 @@ dt {
 	padding-top: 1em;
 }
 
-.description {
+.desc {
 	grid-area: description;
 	padding-top: 2em;
 	padding-left: 1em;
