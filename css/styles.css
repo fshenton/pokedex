@@ -1,7 +1,56 @@
-dt::after{
+dt::after {
 	content: ": ";
 }
 
-dt, dd {
+/*dt, dd {
 	display: inline-block;
+}
+*/
+.pokedex {
+	display: inline-flex;
+}
+
+.glossary,
+.details {
+	flex: 1 0 50%;
+}
+
+.details {
+	display: grid;
+	grid-template-areas: 
+						"image desclist" 
+						"description description";
+	grid-template-rows: 
+}
+
+.desclist {
+	grid-area: desclist;
+}
+
+.image {
+	grid-area: image;
+}	
+
+/*.id {
+	grid-area: "id";
+}
+
+.name {
+	grid-area: "name";
+}
+
+.type {
+	grid-area: "type";
+}	
+
+.weight {
+	grid-area: "weight";
+}
+
+.height {
+	grid-area: "height";
+} */
+
+.description {
+	grid-area: description;
 }
