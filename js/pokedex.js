@@ -35,8 +35,11 @@ function init(){
 	//for every li button (entry in pokedex), grab the id and 
 	//grab the pokemon with that id from pokemans
 	for(listButton of listButtons){
-		let key = listButton.dataset.id;
+		const key = listButton.dataset.id;
 		listButton.innerText = pokemans.get(key).name;
+		listButton.addEventListener("click", (event) => {
+			updateDetails(event, key);
+			});
 	}
 
 	console.log(state);
@@ -67,6 +70,12 @@ function addPokemans(map){
 
 }//addPokemans
 
+
+function updateDetails(event, key){
+	const button = event.target;
+
+	console.log(key);
+}
 
 //state
 //const list, img, info, description
