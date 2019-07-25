@@ -1,0 +1,7 @@
+dt::after{
+	content: ": ";
+}
+
+dt, dd {
+	display: inline-block;
+}

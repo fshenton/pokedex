@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 
 class Pokemon {
+	//#id 
 	constructor(id, name, image, types, weight, height, description){
 		this.id 			= id;
 		this.name 			= name;
