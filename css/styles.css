@@ -1,11 +1,9 @@
-dt::after {
-	content: ": ";
-}
+
 
 /*dt, dd {
 	display: inline-block;
-}
-*/
+}*/
+
 .pokedex {
 	display: inline-flex;
 }
@@ -24,7 +22,19 @@ dt::after {
 }
 
 .desclist {
+	display: grid;
 	grid-area: desclist;
+	grid-template-areas: "dt dd";
+	padding-left: 1em;
+	padding-top: 1em;
+}
+
+dt::after {
+	content: ": ";
+}
+
+dd {
+	padding-left: 1em;
 }
 
 .image {
@@ -53,4 +63,5 @@ dt::after {
 
 .description {
 	grid-area: description;
+	padding-top: 1em;
 }
