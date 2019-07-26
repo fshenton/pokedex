@@ -21,6 +21,7 @@ class Pokemon {
 const state = {
 	//all values start undefined 
 	listButtons: 	undefined, 
+	currSelection: 	undefined,
 	pokemans: 		undefined,
 	image: 			undefined,
 	id: 			undefined,
@@ -109,4 +110,22 @@ function updateCurrDetails(event, key){
 	} catch(e) {
 		console.log(e);
 	}
+
+	updateCurrSelection(event);
+}
+
+function updateCurrSelection(event){
+
+	let currSel = state.currSelection;
+
+	//we must make sure that previously selected item is now unselected
+	if(currSel !== undefined){
+		currSel.classList.remove("selected");
+	}
+
+	//change currSelection to be the newly selected button
+	state.currSelection = event.target;
+
+	//update the new buttons class so that it's styled appropriately
+	state.currSelection.classList.add("selected");
 }

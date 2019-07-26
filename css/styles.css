@@ -50,21 +50,18 @@ html {
 	width: 70%;
 }
 
-.selected {
-	width: 100%;
-}
-
 .listbutton {
 	width: 100%;
 	padding: 0.62em;
 	font-size: 2em;
 	background-color: var(--color__action);
+	border: 1px solid var(--color__bg);
 }
 
 	.listbutton:hover {
 		color: var(--color__lighttext);
 		background-color: var(--color__bg);
-		transform: scale(0.95, 0.95);
+		transform: scale(0.95, 0.95) translateX(10%);
 		transition: transform 0.2s;
 		cursor: pointer;
 	}
@@ -76,10 +73,14 @@ html {
 	.listbutton:focus {
 		outline-style: solid;
 		outline-color: var(--color__lighttext);
-		outline-width: thick;
+		
 	}
 
-
+.selected {
+	transform: scale(0.95, 0.95) translateX(10%);
+	color: var(--color__action);
+	background-color: var(--color__bg);
+}
     
 /* DETAILS --------------- */
 
