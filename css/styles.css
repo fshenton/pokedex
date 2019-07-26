@@ -51,7 +51,7 @@ html {
 }
 
 .glossentry+.glossentry {
-	padding-top: 0px;
+	padding-top: 10px;
 }
 
 .listbutton {
@@ -61,14 +61,16 @@ html {
 	background-color: var(--color__action);
 	border: 1px solid var(--color__bg);
 	text-align: left;
+	/*border-radius: 15px;*/
 }
 
 	.listbutton:hover {
-		color: var(--color__lighttext);
-		background-color: var(--color__bg);
-		transform: scale(0.95, 0.95) translateX(10%);
+		/*color: var(--color__lighttext);*/
+		background-color: white;
+		transform: translateX(10%);
 		transition: transform 0.2s;
 		cursor: pointer;
+		
 	}
 
 	.listbutton:active {
@@ -77,14 +79,14 @@ html {
 
 	.listbutton:focus {
 		outline-style: solid;
-		outline-color: var(--color__lighttext);
-		
+		outline-color: gold;
+		box-shadow: 0 0 5px rgba(255, 243, 166, 0.5);
 	}
 
 .selected {
-	transform: scale(0.95, 0.95) translateX(10%);
+	transform: translateX(10%);
 	color: var(--color__text);
-	background-color: gold;
+	background-color: var(--color__selected);
 }
     
 /* DETAILS --------------- */
