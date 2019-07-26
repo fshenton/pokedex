@@ -57,7 +57,7 @@ function init(){
 	//grab the pokemon with that id from pokemans
 	for(listButton of listButtons){
 		const key = listButton.dataset.id;
-		listButton.innerText = pokemans.get(key).name;
+		listButton.innerText = parseInt(key) + ". " + pokemans.get(key).name;
 		listButton.addEventListener("click", (event) => {
 			updateCurrDetails(event, key);
 			});

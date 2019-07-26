@@ -40,14 +40,18 @@ html {
 .glossary>ul {
 	display: flex;
     flex-direction: column;
-    justify-content: space-around;
-	align-items: center;
+    justify-content: center;
 	height: 100%;
 	list-style-type: none;
+	padding-left: 10%;
 }
 
 .glossentry {
 	width: 70%;
+}
+
+.glossentry+.glossentry {
+	padding-top: 0px;
 }
 
 .listbutton {
@@ -56,6 +60,7 @@ html {
 	font-size: 2em;
 	background-color: var(--color__action);
 	border: 1px solid var(--color__bg);
+	text-align: left;
 }
 
 	.listbutton:hover {
@@ -78,8 +83,8 @@ html {
 
 .selected {
 	transform: scale(0.95, 0.95) translateX(10%);
-	color: var(--color__action);
-	background-color: var(--color__bg);
+	color: var(--color__text);
+	background-color: gold;
 }
     
 /* DETAILS --------------- */
