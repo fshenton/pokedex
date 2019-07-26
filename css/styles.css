@@ -25,6 +25,7 @@ html {
     width: 1000px;
     height: 500px;
     background-color: var(--color__pokedexbody);
+    border-radius: 30px;
 }
 
 .glossary,
@@ -96,6 +97,7 @@ html {
 	position: relative;
 	width: 500px;
 	height: 500px;
+	padding: 50px;
 	grid-template-areas: 
 						"image desclist" 
 						"description description";
