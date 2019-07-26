@@ -106,10 +106,6 @@ html {
 	height: 100%;
 }
 
-.hidden {
-	display: none;
-}
-
 .image {
 	grid-area: image;
 	padding-top: 0.62em;
@@ -143,4 +139,8 @@ dt {
 	padding-top: 2em;
 	padding-left: 1em;
 	z-index: 0;
+}
+
+.hidden {
+	display: none;
 }

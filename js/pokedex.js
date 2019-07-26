@@ -25,6 +25,7 @@ const state = {
 	pokemans: 		undefined,
 	splash: 		undefined,
 	image: 			undefined,
+	desclist:  		undefined,
 	id: 			undefined,
 	name:			undefined,
 	type: 			undefined,
@@ -41,6 +42,7 @@ function init(){
 	//assign all of the needed dom elements to the state for later use
 	state.splash 	= document.getElementById("splash");
 	state.image 	= document.getElementById("image");
+	state.desclist 	= document.getElementById("desclist");
 	state.id 		= document.getElementById("idfield");
 	state.name 		= document.getElementById("namefield");
 	state.type 		= document.getElementById("typefield");
@@ -115,8 +117,13 @@ function updateCurrDetails(event, key){
 		console.log(e);
 	}
 
+	//if splash screen is showing (i.e. nothing selected yet)
 	if(!state.splash.classList.contains("hidden")){
+		//hide splash screen
 		state.splash.classList.add("hidden");
+		//show details
+		state.desclist.classList.remove("hidden");
+		state.desc.classList.remove("hidden");
 	}
 
 	updateCurrSelection(event);
