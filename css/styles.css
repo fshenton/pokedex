@@ -1,6 +1,6 @@
 
 html {
-	background-color: var(--color__bg);
+	background-color: var(--color__imagebg);
 }
 
 /* WRAPPER --------------- */
@@ -15,7 +15,7 @@ html {
 	padding: 1em 0;
 	text-align: center;
 	font-size: 2em;
-	color: var(--color__action);
+	color: var(--color__text);
 }
 
 /* POKEDEX --------------- */
@@ -24,6 +24,7 @@ html {
 	display: inline-flex;
     width: 1000px;
     height: 500px;
+    background-color: var(--color__pokedexbody);
 }
 
 .glossary,
@@ -34,7 +35,7 @@ html {
 /* GLOSSARY --------------- */
 
 .glossary {
-	background-color: var(--color__accent);
+	/*background-color: var(--color__accent);*/
 }
 
 .glossary>ul {
@@ -58,14 +59,12 @@ html {
 	width: 100%;
 	padding: 0.62em;
 	font-size: 2em;
-	background-color: var(--color__action);
+	background-color: var(--color__buttons);
 	border: 1px solid var(--color__bg);
 	text-align: left;
-	/*border-radius: 15px;*/
 }
 
 	.listbutton:hover {
-		/*color: var(--color__lighttext);*/
 		background-color: white;
 		transform: translateX(10%);
 		transition: transform 0.2s;
@@ -86,7 +85,7 @@ html {
 .selected {
 	transform: translateX(10%);
 	color: var(--color__text);
-	background-color: var(--color__selected);
+	background-color: var(--color__selectedbuttons);
 }
     
 /* DETAILS --------------- */
@@ -102,7 +101,7 @@ html {
 						"description description";
 	grid-template-columns: 250px;
 	grid-template-rows: 250px;
-	background-color: var(--color__accent);
+	/*background-color: var(--color__accent);*/
 }
 
 .splash {
@@ -123,6 +122,7 @@ html {
 	grid-template-areas: "dt dd";
 	padding-top: 1em;
 	padding-left: 1em;
+	background-color: var(--color__imageframe);
 }
 
 dt::after {

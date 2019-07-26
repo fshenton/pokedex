@@ -5,6 +5,16 @@
 	--color__selected: #ffcd70;
 	--color__accent: #a63d40;
 	--color__bg: #151515;
+
+
+
+	/* TAKEN FROM REF IMAGE ------------------- */
+	--color__pokedexbody: rgb(211, 10, 64);
+	--color__screen: rgb(8, 64, 53);
+	--color__imagebg: rgb(251, 251, 251);
+	--color__imageframe: rgb(227, 227, 227);
+	--color__buttons: rgb(34, 196, 234);
+	--color__selectedbuttons: rgb(34, 210, 248);
 }
 
 
