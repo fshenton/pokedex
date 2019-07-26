@@ -23,6 +23,7 @@ const state = {
 	listButtons: 	undefined, 
 	currSelection: 	undefined,
 	pokemans: 		undefined,
+	splash: 		undefined,
 	image: 			undefined,
 	id: 			undefined,
 	name:			undefined,
@@ -38,6 +39,7 @@ function init(){
 	addPokemans(pokemans);
 
 	//assign all of the needed dom elements to the state for later use
+	state.splash 	= document.getElementById("splash");
 	state.image 	= document.getElementById("image");
 	state.id 		= document.getElementById("idfield");
 	state.name 		= document.getElementById("namefield");
@@ -45,6 +47,7 @@ function init(){
 	state.weight 	= document.getElementById("weightfield");
 	state.height 	= document.getElementById("heightfield");
 	state.desc 		= document.getElementById("descfield");
+	
 
 	const listButtons 	= state.listButtons = document.getElementsByClassName("listbutton");
 
@@ -100,6 +103,7 @@ function updateCurrDetails(event, key){
 	try {
 		pokemonEntry 			= state.pokemans.get(key);
 		state.image.src 		= pokemonEntry.image;
+		state.image.alt         = pokemonEntry.name;
 		state.id.innerText 		= pokemonEntry.id;
 		state.name.innerText 	= pokemonEntry.name;
 		state.type.innerText 	= pokemonEntry.type;
@@ -109,6 +113,10 @@ function updateCurrDetails(event, key){
 		state.desc.innerText = "Description: " + pokemonEntry.description;
 	} catch(e) {
 		console.log(e);
+	}
+
+	if(!state.splash.classList.contains("hidden")){
+		state.splash.classList.add("hidden");
 	}
 
 	updateCurrSelection(event);
