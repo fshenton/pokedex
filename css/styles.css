@@ -46,11 +46,40 @@ html {
 	list-style-type: none;
 }
 
-.glossentry>button{
+.glossentry {
+	width: 70%;
+}
+
+.selected {
+	width: 100%;
+}
+
+.listbutton {
+	width: 100%;
 	padding: 0.62em;
 	font-size: 2em;
 	background-color: var(--color__action);
 }
+
+	.listbutton:hover {
+		color: var(--color__lighttext);
+		background-color: var(--color__bg);
+		transform: scale(0.95, 0.95);
+		transition: transform 0.2s;
+		cursor: pointer;
+	}
+
+	.listbutton:active {
+		color: var(--color__action);
+	}
+
+	.listbutton:focus {
+		outline-style: solid;
+		outline-color: var(--color__lighttext);
+		outline-width: thick;
+	}
+
+
     
 /* DETAILS --------------- */
 

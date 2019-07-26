@@ -45,7 +45,7 @@ function init(){
 	state.height 	= document.getElementById("heightfield");
 	state.desc 		= document.getElementById("descfield");
 
-	const listButtons 	= state.listButtons = document.getElementsByClassName("list button");
+	const listButtons 	= state.listButtons = document.getElementsByClassName("listbutton");
 
 	//for every li button (entry in pokedex), grab the id and 
 	//grab the pokemon with that id from pokemans
