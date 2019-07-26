@@ -131,6 +131,14 @@ dt {
 	padding-top: 1em;
 }
 
+.weight::after {
+	content: "kg";
+}
+
+.height::after {
+	content: "m";
+}
+
 .desc {
 	grid-area: description;
 	padding-top: 2em;
