@@ -41,16 +41,37 @@ html {
 }
 
 .glossary h2 {
-	padding
+	padding-top: 10px;
+	padding-left: 10%;
+	margin-bottom: 10px;
 }
 
-.glossary ul {
+.glosslist {
 	display: flex;
     flex-direction: column;
     padding-left: 10%;
-	height: 90%;
+	height: 80%;
+	width: 80%;
 	list-style-type: none;
-	overflow: scroll;
+	overflow: hidden scroll;
+}
+
+.glosslist>li {
+	width: 100%;
+}
+
+.listbutton {
+	width: 80%;
+	padding: 0.31em 0 0.31em 0.62em;
+	border-top: 1px solid;
+	border-right: 1px solid;
+	border-bottom: 0;
+	border-left: 1px solid;
+	text-align: left;
+}
+
+li:last-child button {
+	border-bottom: 1px solid;
 }
 
 .selected {
