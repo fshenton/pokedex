@@ -5,7 +5,9 @@ window.addEventListener("DOMContentLoaded", init);
 class Pokemon {
 	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 	//#id 
-	constructor(id, name, image, type, weight, height, description){
+	constructor(id, name = "???", image = "assets/images/placeholder.png", 
+		type = "???", weight = "???", height = "???", description = "???"){
+		
 		this.id 			= id;
 		this.name 			= name;
 		this.image 			= image;
@@ -23,6 +25,7 @@ const state = {
 	listButtons: 	undefined, 
 	currSelection: 	undefined,
 	pokemans: 		undefined,
+	// unknownPokemon: undefined,
 	splash: 		undefined,
 	image: 			undefined,
 	desclist:  		undefined,
@@ -37,7 +40,12 @@ const state = {
 function init(){
 	//using a map for future proofing (when using all 151 pokemon)
 	const pokemans = state.pokemans = new Map();
+	
 	addPokemans(pokemans);
+
+	// console.log(pokemans.get(1));
+	
+	// setUpUnknownPokemon(state); //used for filling ??? entries
 
 	//assign all of the needed dom elements to the state for later use
 	state.splash 	= document.getElementById("splash");
@@ -56,15 +64,20 @@ function init(){
 	//for every li button (entry in pokedex), grab the id and 
 	//grab the pokemon with that id from pokemans
 	for(listButton of listButtons){
-		const key = listButton.dataset.id;
-		listButton.innerText = parseInt(key) + ". " + pokemans.get(key).name;
+		let key = parseInt(listButton.dataset.id);
+		//TODO: instead of the ones we've entered, it should be the ones that have been seen or caught
+	
+		listButton.innerText = `${listButton.innerText} ${pokemans.get(key).name}`;
+
+		//add event listener that will update pokemon details when button clicked
 		listButton.addEventListener("click", (event) => {
 			updateCurrDetails(event, key);
-			});
+		});	
 	}
 
 	console.log(state);
 }//init
+
 
 function addPokemans(map){
 
@@ -72,22 +85,26 @@ function addPokemans(map){
 
 	//TODO: future change to store all pokemon details in external JSON file would be nice
 	bulbasaur = new Pokemon(
-		"001", "Bulbasaur", "assets/images/Bulbasaur.png", 
+		1, "Bulbasaur", "assets/images/Bulbasaur.png", 
 		["Grass", "Poison"], 0.7, 6.9, 
 		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.");
 
 	charmander = new Pokemon(
-		"004", "Charmander", "assets/images/Charmander.png", 
+		4, "Charmander", "assets/images/Charmander.png", 
 		["Fire"], 0.6, 8.5, 
 		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.");
 
-	squirtle = new Pokemon("007", "Squirtle", "assets/images/Squirtle.png", 
+	squirtle = new Pokemon(
+		7, "Squirtle", "assets/images/Squirtle.png", 
 		["Water"], 0.5, 9.0, 
 		"Squirtle is a small Pokémon that resembles a light blue turtle.");
 
-	pikachu = new Pokemon("025", "Pikachu", "assets/images/Pikachu.png", 
+	pikachu = new Pokemon(
+		25, "Pikachu", "assets/images/Pikachu.png", 
 		["Electric"], 0.4, 6.0, 
 		"Pikachu is a short, chubby rodent Pokémon.");
+
+
 
 	//using the pokemon ID as the key for the map, could be name instead (it might be more readable)
 	map.set(bulbasaur.id, bulbasaur);
@@ -95,7 +112,30 @@ function addPokemans(map){
 	map.set(squirtle.id, squirtle);
 	map.set(pikachu.id, pikachu);
 
+	//add ??? entries for each undefined map entry (151-num defined)
+	addUnknownPokemans(map);
 }//addPokemans
+
+
+function addUnknownPokemans(map){
+
+	//want this to run 151 times, once for each pokemon entry`
+	for(let key = 1; key < 152; key++){
+
+		//if we don't have a proper pokemon entry, add a placeholder
+		if(map.get(key) === undefined){
+			//the only value we need to pass is the key, which === id
+			//the rest of the values default to ???
+			let unknownPokemon = new Pokemon(key);
+			// console.log(unknownPokemon);
+
+			//add the unknownpokemon entry to the pokedex map
+			map.set(key, unknownPokemon);
+			// console.log(map.get(key));
+		}
+	}
+
+}//addUnknownPokemon
 
 
 function updateCurrDetails(event, key){
@@ -104,6 +144,7 @@ function updateCurrDetails(event, key){
 
 	try {
 		pokemonEntry 			= state.pokemans.get(key);
+		console.log(pokemonEntry);
 		state.image.src 		= pokemonEntry.image;
 		state.image.alt         = pokemonEntry.name;
 		state.id.innerText 		= pokemonEntry.id;
