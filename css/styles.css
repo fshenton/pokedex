@@ -37,51 +37,21 @@ html {
 
 .glossary {
 	/*background-color: var(--color__accent);*/
+	height: 100%;
 }
 
-.glossary>ul {
+.glossary h2 {
+	padding
+}
+
+.glossary ul {
 	display: flex;
     flex-direction: column;
-    justify-content: center;
-	height: 100%;
+    padding-left: 10%;
+	height: 90%;
 	list-style-type: none;
-	padding-left: 10%;
+	overflow: scroll;
 }
-
-.glossentry {
-	width: 70%;
-}
-
-.glossentry+.glossentry {
-	padding-top: 10px;
-}
-
-.listbutton {
-	width: 100%;
-	padding: 0.62em;
-	font-size: 2em;
-	background-color: var(--color__buttons);
-	border: 1px solid var(--color__bg);
-	text-align: left;
-}
-
-	.listbutton:hover {
-		background-color: white;
-		transform: translateX(10%);
-		transition: transform 0.2s;
-		cursor: pointer;
-		
-	}
-
-	.listbutton:active {
-		color: var(--color__action);
-	}
-
-	.listbutton:focus {
-		outline-style: solid;
-		outline-color: gold;
-		box-shadow: 0 0 5px rgba(255, 243, 166, 0.5);
-	}
 
 .selected {
 	transform: translateX(10%);
