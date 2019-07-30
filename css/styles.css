@@ -88,11 +88,11 @@ html {
 	display: inline-block;
 }
 
-.weight::after {
+.info-list .weight::after {
 	content: "kg";
 }
 
-.height::after {
+.info-list .height::after {
 	content: "m";
 }
 

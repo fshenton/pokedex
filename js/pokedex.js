@@ -5,17 +5,19 @@ window.addEventListener("DOMContentLoaded", init);
 class Pokemon {
 	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 	//#id 
-	constructor(id, name = "???", image = "assets/images/placeholder.png",
-		sprite = "assets/images/placeholder.png",
-		type = "???", weight = "???", height = "???", description = "???"){
+	constructor(id, name = "???", sprite = "assets/images/placeholder.png",
+		type = "???", weight = "???", height = "???", seen = 0, caught = 0,
+		image = "assets/images/placeholder.png", description = "???"){
 		
 		this.id 			= id;
 		this.name 			= name;
-		this.image 			= image;
 		this.sprite 		= sprite;
 		this.type 			= type;
 		this.weight 		= weight;
 		this.height 		= height;
+		this.seen   		= seen;
+		this.caught 		= caught;
+		this.image 			= image;
 		this.description 	= description;
 	}
 	//TODO: update details function
@@ -30,11 +32,13 @@ const state = {
 	desclist:  		undefined,
 	id: 			undefined,
 	name:			undefined,
-	image: 			undefined,
 	sprite: 		undefined,
 	type: 			undefined,
 	weight: 		undefined,
 	height: 		undefined,
+	seen: 			undefined,
+	caught:         undefined, 
+	image: 			undefined,
 	desc: 			undefined
 }
 
@@ -57,6 +61,8 @@ function init(){
 	state.type 		= document.getElementById("type");
 	state.weight 	= document.getElementById("weight");
 	state.height 	= document.getElementById("height");
+	state.seen 		= document.getElementById("seen");
+	state.caught 	= document.getElementById("caught");
 	state.desc 		= document.getElementById("bio");
 	
 
@@ -94,27 +100,27 @@ function addPokemans(map){
 
 	//TODO: future change to store all pokemon details in external JSON file would be nice
 	bulbasaur = new Pokemon(
-		1, "Bulbasaur", "assets/images/bulbasaur.png", 
-		"assets/images/bulbasaur-sprite.png", 
-		["Grass", "Poison"], 0.7, 6.9, 
+		1, "Bulbasaur",  "assets/images/bulbasaur-sprite.png", 
+		["Grass", "Poison"], 0.7, 6.9, 1, 1,
+		"assets/images/bulbasaur.png",
 		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.");
 
 	charmander = new Pokemon(
-		4, "Charmander", "assets/images/charmander.png", 
-		"assets/images/charmander-sprite.png",
-		["Fire"], 0.6, 8.5, 
+		4, "Charmander",  "assets/images/charmander-sprite.png",
+		["Fire"], 0.6, 8.5, 1, 1,
+		"assets/images/charmander.png",
 		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.");
 
 	squirtle = new Pokemon(
-		7, "Squirtle", "assets/images/squirtle.png", 
-		"assets/images/squirtle-sprite.png",
-		["Water"], 0.5, 9.0, 
+		7, "Squirtle", "assets/images/squirtle-sprite.png",
+		["Water"], 0.5, 9.0, 1, 1,
+		"assets/images/squirtle.png", 
 		"Squirtle is a small Pokémon that resembles a light blue turtle.");
 
 	pikachu = new Pokemon(
-		25, "Pikachu", "assets/images/pikachu.png", 
-		"assets/images/pikachu-sprite.png",
-		["Electric"], 0.4, 6.0, 
+		25, "Pikachu", "assets/images/pikachu-sprite.png",
+		["Electric"], 0.4, 6.0, 5, 2,
+		"assets/images/pikachu.png", 
 		"Pikachu is a short, chubby rodent Pokémon.");
 
 
@@ -169,27 +175,31 @@ function createListItem(data){
 
 function updateCurrDetails(event){
 
-	let { id, name, image, sprite, type, weight, height, desc } = state;
+	let { id, name, sprite, type, weight, height, seen, caught, image, desc } 
+		= state;
 
 	const key = parseInt(event.target.dataset.id);
 
 	const selectedPokemon = state.pokemans.get(key);
 
-	const { name: pName, id: pId, image: pImage, sprite: pSprite, 
-			type: pType, weight: pWeight, height: pHeight, description: pDesc }
+	const { name: pName, id: pId, sprite: pSprite, type: pType, 
+			weight: pWeight, height: pHeight, seen: pSeen, 
+			caught: pCaught, image: pImage, description: pDesc }
 		= selectedPokemon;
 
 	console.log(selectedPokemon);
 
 	id.innerText 			= pId;
 	name.innerText 			= pName; 
-	image.src				= pImage;
-	image.alt    			= `Image of ${pName}`;
 	sprite.src 				= pSprite;
 	sprite.alt              = `Sprite for ${pName}`;
 	type.innerText 			= pType;
 	weight.innerText 		= pWeight;
 	height.innerText 		= pHeight;
+	seen.innerText			= pSeen;
+	caught.innerText   		= pCaught;
+	image.src				= pImage;
+	image.alt    			= `Image of ${pName}`;
 	desc.innerText 			= pDesc;
 
 	updateCurrSelection(event);
