@@ -72,14 +72,12 @@ function init(){
 	//for every li button (entry in pokedex), grab the id and 
 	//grab the pokemon with that id from pokemans
 	for(let listButton of listButtons){
-		console.log(state.pokemans);
-		console.log(listButton);
 
+		let buttonText = listButton.innerText;
 		const key = parseInt(listButton.dataset.id);
 		//TODO: instead of the ones we've entered, it should be the ones that have been seen or caught
 	
-		console.log(key);
-		listButton.innerText = `${listButton.innerText} ${pokemans.get(key).name}`;
+		listButton.innerText = `${buttonText} ${pokemans.get(key).name}`;
 
 		//add event listener that will update pokemon details when button clicked
 		listButton.addEventListener("click", updateCurrDetails);
@@ -155,11 +153,9 @@ function addUnknownPokemans(map){
 			//the only value we need to pass is the key, which === id
 			//the rest of the values default to ???
 			let unknownPokemon = new Pokemon(key);
-			// console.log(unknownPokemon);
 
 			//add the unknownpokemon entry to the pokedex map
 			map.set(key, unknownPokemon);
-			// console.log(map.get(key));
 		}
 	}
 
@@ -168,25 +164,27 @@ function addUnknownPokemans(map){
 
 function updateCurrDetails(event){
 
-	let pokemonEntry = undefined;
+	// let { image.src: imageSrc, image.alt: imageAlt, id.innerText: id, 
+	// 	name.innerText: name, type.innerText: type, weight.innerText: weight,
+	// 	height.innerText: height, desc.innerText: desc } 
+	// 	= state;
+
+	let { image, id, name, type, weight, height, desc } = state;
 
 	const key = parseInt(event.target.dataset.id);
 
-	try {
-		pokemonEntry 			= state.pokemans.get(key);
-		console.log(pokemonEntry);
-		state.image.src 		= pokemonEntry.image;
-		state.image.alt         = pokemonEntry.name;
-		state.id.innerText 		= pokemonEntry.id;
-		state.name.innerText 	= pokemonEntry.name;
-		state.type.innerText 	= pokemonEntry.type;
-		state.weight.innerText 	= pokemonEntry.weight;
-		state.height.innerText 	= pokemonEntry.height;
-		//TODO: Sort the description prefix for the paragraph, don't like duping
-		state.desc.innerText = "Description: " + pokemonEntry.description;
-	} catch(e) {
-		console.error(e);
-	}
+	const { image: pImage, name: pName, id: pId, ptype: pType, weight: pWeight,
+			height: pHeight, description: pDesc }
+		= state.pokemans.get(key);
+
+	image.src				= pImage;
+	image.alt    			= pName;
+	id.innerText 			= pId;
+	name.innerText 			= pName; //placeholder for now
+	type.innerText 			= pType;
+	weight.innerText 		= pWeight;
+	height.innerText 		= pHeight;
+	desc.innerText 			= pDesc;
 
 	//if splash screen is showing (i.e. nothing selected yet)
 	if(!state.splash.classList.contains("hidden")){
