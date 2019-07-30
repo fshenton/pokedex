@@ -89,9 +89,8 @@ li:last-child button {
 	width: 500px;
 	height: 500px;
 	padding: 50px;
-	grid-template-areas: 
-						"image desclist" 
-						"description description";
+	grid-template-areas: "image       desclist" 
+						 "description description";
 	grid-template-columns: 250px;
 	grid-template-rows: 250px;
 	/*background-color: var(--color__accent);*/

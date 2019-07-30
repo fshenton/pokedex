@@ -59,20 +59,30 @@ function init(){
 	state.desc 		= document.getElementById("descfield");
 	
 
+	const list = document.getElementById("glosslist");
+
+	//create 151 li elements within the glossary ul
+	for(let count = 1; count < 152; count++){
+		const listItem = createListItem(count);
+		list.appendChild(listItem);
+	}
+
 	const listButtons 	= state.listButtons = document.getElementsByClassName("listbutton");
 
 	//for every li button (entry in pokedex), grab the id and 
 	//grab the pokemon with that id from pokemans
-	for(listButton of listButtons){
-		let key = parseInt(listButton.dataset.id);
+	for(let listButton of listButtons){
+		console.log(state.pokemans);
+		console.log(listButton);
+
+		const key = parseInt(listButton.dataset.id);
 		//TODO: instead of the ones we've entered, it should be the ones that have been seen or caught
 	
+		console.log(key);
 		listButton.innerText = `${listButton.innerText} ${pokemans.get(key).name}`;
 
 		//add event listener that will update pokemon details when button clicked
-		listButton.addEventListener("click", (event) => {
-			updateCurrDetails(event, key);
-		});	
+		listButton.addEventListener("click", updateCurrDetails);
 	}
 
 	console.log(state);
@@ -117,6 +127,24 @@ function addPokemans(map){
 }//addPokemans
 
 
+//call this loads of time for each entry you want
+function createListItem(data){
+	const id = data;
+
+	const listItem = document.createElement("li");
+	const button = document.createElement("button");
+
+	button.setAttribute("data-id", id);
+	button.classList.add("listbutton");
+	button.innerText = id;
+	// button.addEventListener("click", updateCurrDetails);
+
+	listItem.appendChild(button);
+
+	return listItem;
+}//createListItem
+
+
 function addUnknownPokemans(map){
 
 	//want this to run 151 times, once for each pokemon entry`
@@ -138,9 +166,11 @@ function addUnknownPokemans(map){
 }//addUnknownPokemon
 
 
-function updateCurrDetails(event, key){
+function updateCurrDetails(event){
 
 	let pokemonEntry = undefined;
+
+	const key = parseInt(event.target.dataset.id);
 
 	try {
 		pokemonEntry 			= state.pokemans.get(key);
@@ -155,7 +185,7 @@ function updateCurrDetails(event, key){
 		//TODO: Sort the description prefix for the paragraph, don't like duping
 		state.desc.innerText = "Description: " + pokemonEntry.description;
 	} catch(e) {
-		console.log(e);
+		console.error(e);
 	}
 
 	//if splash screen is showing (i.e. nothing selected yet)
