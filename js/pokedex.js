@@ -50,13 +50,13 @@ function init(){
 	//assign all of the needed dom elements to the state for later use
 	state.splash 	= document.getElementById("splash");
 	state.image 	= document.getElementById("image");
-	state.desclist 	= document.getElementById("desclist");
-	state.id 		= document.getElementById("idfield");
-	state.name 		= document.getElementById("namefield");
-	state.type 		= document.getElementById("typefield");
-	state.weight 	= document.getElementById("weightfield");
-	state.height 	= document.getElementById("heightfield");
-	state.desc 		= document.getElementById("descfield");
+	state.desclist 	= document.getElementById("infoList");
+	state.id 		= document.getElementById("id");
+	state.name 		= document.getElementById("name");
+	state.type 		= document.getElementById("type");
+	state.weight 	= document.getElementById("weight");
+	state.height 	= document.getElementById("height");
+	state.desc 		= document.getElementById("bio");
 	
 
 	const list = document.getElementById("glosslist");
@@ -164,16 +164,11 @@ function addUnknownPokemans(map){
 
 function updateCurrDetails(event){
 
-	// let { image.src: imageSrc, image.alt: imageAlt, id.innerText: id, 
-	// 	name.innerText: name, type.innerText: type, weight.innerText: weight,
-	// 	height.innerText: height, desc.innerText: desc } 
-	// 	= state;
-
 	let { image, id, name, type, weight, height, desc } = state;
 
 	const key = parseInt(event.target.dataset.id);
 
-	const { image: pImage, name: pName, id: pId, ptype: pType, weight: pWeight,
+	const { image: pImage, name: pName, id: pId, type: pType, weight: pWeight,
 			height: pHeight, description: pDesc }
 		= state.pokemans.get(key);
 
@@ -185,15 +180,6 @@ function updateCurrDetails(event){
 	weight.innerText 		= pWeight;
 	height.innerText 		= pHeight;
 	desc.innerText 			= pDesc;
-
-	//if splash screen is showing (i.e. nothing selected yet)
-	if(!state.splash.classList.contains("hidden")){
-		//hide splash screen
-		state.splash.classList.add("hidden");
-		//show details
-		state.desclist.classList.remove("hidden");
-		state.desc.classList.remove("hidden");
-	}
 
 	updateCurrSelection(event);
 }
