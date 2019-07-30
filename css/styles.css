@@ -86,51 +86,8 @@ li:last-child button {
 /* DETAILS --------------- */
 
 
-.details {
-	display: grid;
-	flex: 1 0 auto;
-	position: relative;
-	padding: 50px;
-	grid-template-areas: "image       desclist" 
-						 "description description";
-	/*grid-template-columns: 250px;
-	grid-template-rows: 250px;*/
-	/*background-color: var(--color__accent);*/
-}
 
-.splash {
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-}
 
-.image {
-	grid-area: image;
-	padding-top: 0.62em;
-}	
-
-.desclist {
-	display: grid;
-	grid-area: desclist;
-	grid-template-areas: "dt dd";
-	padding-top: 1em;
-	padding-left: 1em;
-	background-color: var(--color__imageframe);
-}
-
-dt::after {
-	content: ": ";
-}
-
-dd {
-	padding-left: 1em;
-}
-
-dd, 
-dt {
-	padding-top: 1em;
-}
 
 .weight::after {
 	content: "kg";
@@ -140,12 +97,3 @@ dt {
 	content: "m";
 }
 
-.desc {
-	grid-area: description;
-	padding-top: 2em;
-	padding-left: 1em;
-}
-
-.hidden {
-	display: none;
-}
