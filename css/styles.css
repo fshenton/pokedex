@@ -25,7 +25,6 @@ html {
     width: 1000px;
     height: 500px;
     background-color: var(--color__pokedexbody);
-    border-radius: 30px;
 }
 
 .glossary,
@@ -48,20 +47,18 @@ html {
 
 .glosslist {
 	display: flex;
+	height: 100%;
     flex-direction: column;
-    padding-left: 10%;
-	height: 80%;
-	width: 80%;
 	list-style-type: none;
 	overflow: hidden scroll;
 }
-
+/*
 .glosslist>li {
 	width: 100%;
-}
+}*/
 
 .listbutton {
-	width: 80%;
+	width: 100%;
 	padding: 0.31em 0 0.31em 0.62em;
 	border-top: 1px solid;
 	border-right: 1px solid;
