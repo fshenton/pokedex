@@ -176,7 +176,7 @@ function updateCurrDetails(event){
 	const selectedPokemon = state.pokemans.get(key);
 
 	const { name: pName, id: pId, image: pImage, sprite: pSprite, 
-			type: pType, weight: pWeight, eight: pHeight, description: pDesc }
+			type: pType, weight: pWeight, height: pHeight, description: pDesc }
 		= selectedPokemon;
 
 	console.log(selectedPokemon);

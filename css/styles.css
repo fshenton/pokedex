@@ -38,18 +38,10 @@ html {
 .listbutton {
 	width: 100%;
 	padding: 0.31em 0 0.31em 0.62em;
-	/*border-top: 1px solid;
-	border-right: 1px solid;
-	border-bottom: 0;
-	border-left: 1px solid;*/
 	text-align: left;
 	transition: font-size 0.5s;
 	background-color: #ddd;
 }
-
-/*li:last-child button {
-	border-bottom: 1px solid;
-}*/
 
 .listbutton:hover {
 	cursor: pointer;
@@ -78,6 +70,23 @@ html {
 	flex-basis: 500px;
 }
 
+.infoheader {
+	display: flex;
+
+}
+
+.infoheader .name {
+	
+}
+
+.infoheader .sprite {
+	
+}
+
+.info-list .value, 
+.info-list .category  {
+	display: inline-block;
+}
 
 .weight::after {
 	content: "kg";
