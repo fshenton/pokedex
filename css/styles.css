@@ -65,16 +65,30 @@ html {
 	border-bottom: 0;
 	border-left: 1px solid;
 	text-align: left;
+	transition: font-size 0.5s;
 }
 
 li:last-child button {
 	border-bottom: 1px solid;
 }
 
+.listbutton:hover {
+	cursor: pointer;
+	background-color: ghostwhite;
+}
+
+.listbutton:focus {
+	outline-color: var(--color__pokedexbody);
+	outline-width: thick;
+}
+
+.listbutton:active {
+	background-color: darkgrey;
+}
+
 .selected {
-	transform: translateX(10%);
-	color: var(--color__text);
-	background-color: var(--color__selectedbuttons);
+	font-size: 3em;
+	transition: font-size 0.5s;
 }
     
 /* DETAILS --------------- */

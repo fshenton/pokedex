@@ -136,7 +136,7 @@ function createListItem(data){
 
 	button.setAttribute("data-id", id);
 	button.classList.add("listbutton");
-	button.innerText = id;
+	button.innerText = `${id}.`;
 	// button.addEventListener("click", updateCurrDetails);
 
 	listItem.appendChild(button);
