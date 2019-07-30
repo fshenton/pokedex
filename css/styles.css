@@ -27,15 +27,11 @@ html {
     background-color: var(--color__pokedexbody);
 }
 
-.glossary,
-.details {
-	flex: 1 0 500px;
-}
 
 /* GLOSSARY --------------- */
 
 .glossary {
-	/*background-color: var(--color__accent);*/
+	flex-basis: 24rem;
 	height: 100%;
 }
 
@@ -52,10 +48,6 @@ html {
 	list-style-type: none;
 	overflow: hidden scroll;
 }
-/*
-.glosslist>li {
-	width: 100%;
-}*/
 
 .listbutton {
 	width: 100%;
@@ -96,14 +88,13 @@ li:last-child button {
 
 .details {
 	display: grid;
+	flex: 1 0 auto;
 	position: relative;
-	width: 500px;
-	height: 500px;
 	padding: 50px;
 	grid-template-areas: "image       desclist" 
 						 "description description";
-	grid-template-columns: 250px;
-	grid-template-rows: 250px;
+	/*grid-template-columns: 250px;
+	grid-template-rows: 250px;*/
 	/*background-color: var(--color__accent);*/
 }
 
