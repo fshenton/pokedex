@@ -27,13 +27,11 @@ const state = {
 	listButtons: 	undefined, 
 	currSelection: 	undefined,
 	pokemans: 		undefined,
-	// unknownPokemon: undefined,
-	splash: 		undefined,
-	image: 			undefined,
-	sprite: 		undefined,
 	desclist:  		undefined,
 	id: 			undefined,
 	name:			undefined,
+	image: 			undefined,
+	sprite: 		undefined,
 	type: 			undefined,
 	weight: 		undefined,
 	height: 		undefined,
@@ -51,12 +49,11 @@ function init(){
 	// setUpUnknownPokemon(state); //used for filling ??? entries
 
 	//assign all of the needed dom elements to the state for later use
-	state.splash 	= document.getElementById("splash");
-	state.image 	= document.getElementById("image");
-	state.sprite 	= document.getElementById("sprite");
 	state.desclist 	= document.getElementById("infoList");
 	state.id 		= document.getElementById("id");
 	state.name 		= document.getElementById("name");
+	state.image 	= document.getElementById("image");
+	state.sprite 	= document.getElementById("sprite");
 	state.type 		= document.getElementById("type");
 	state.weight 	= document.getElementById("weight");
 	state.height 	= document.getElementById("height");
@@ -172,24 +169,24 @@ function createListItem(data){
 
 function updateCurrDetails(event){
 
-	let { image, sprite, id, name, type, weight, height, desc } = state;
+	let { id, name, image, sprite, type, weight, height, desc } = state;
 
 	const key = parseInt(event.target.dataset.id);
 
 	const selectedPokemon = state.pokemans.get(key);
 
-	const { image: pImage, sprite: pSprite, name: pName, id: pId, type: pType, weight: pWeight,
-			height: pHeight, description: pDesc }
+	const { name: pName, id: pId, image: pImage, sprite: pSprite, 
+			type: pType, weight: pWeight, eight: pHeight, description: pDesc }
 		= selectedPokemon;
 
 	console.log(selectedPokemon);
 
+	id.innerText 			= pId;
+	name.innerText 			= pName; 
 	image.src				= pImage;
 	image.alt    			= `Image of ${pName}`;
 	sprite.src 				= pSprite;
 	sprite.alt              = `Sprite for ${pName}`;
-	id.innerText 			= pId;
-	name.innerText 			= pName; //placeholder for now
 	type.innerText 			= pType;
 	weight.innerText 		= pWeight;
 	height.innerText 		= pHeight;
