@@ -5,12 +5,14 @@ window.addEventListener("DOMContentLoaded", init);
 class Pokemon {
 	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 	//#id 
-	constructor(id, name = "???", image = "assets/images/placeholder.png", 
+	constructor(id, name = "???", image = "assets/images/placeholder.png",
+		sprite = "assets/images/placeholder.png",
 		type = "???", weight = "???", height = "???", description = "???"){
 		
 		this.id 			= id;
 		this.name 			= name;
 		this.image 			= image;
+		this.sprite 		= sprite;
 		this.type 			= type;
 		this.weight 		= weight;
 		this.height 		= height;
@@ -28,6 +30,7 @@ const state = {
 	// unknownPokemon: undefined,
 	splash: 		undefined,
 	image: 			undefined,
+	sprite: 		undefined,
 	desclist:  		undefined,
 	id: 			undefined,
 	name:			undefined,
@@ -50,6 +53,7 @@ function init(){
 	//assign all of the needed dom elements to the state for later use
 	state.splash 	= document.getElementById("splash");
 	state.image 	= document.getElementById("image");
+	state.sprite 	= document.getElementById("sprite");
 	state.desclist 	= document.getElementById("infoList");
 	state.id 		= document.getElementById("id");
 	state.name 		= document.getElementById("name");
@@ -93,22 +97,26 @@ function addPokemans(map){
 
 	//TODO: future change to store all pokemon details in external JSON file would be nice
 	bulbasaur = new Pokemon(
-		1, "Bulbasaur", "assets/images/Bulbasaur.png", 
+		1, "Bulbasaur", "assets/images/bulbasaur.png", 
+		"assets/images/bulbasaur-sprite.png", 
 		["Grass", "Poison"], 0.7, 6.9, 
 		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.");
 
 	charmander = new Pokemon(
-		4, "Charmander", "assets/images/Charmander.png", 
+		4, "Charmander", "assets/images/charmander.png", 
+		"assets/images/charmander-sprite.png",
 		["Fire"], 0.6, 8.5, 
 		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.");
 
 	squirtle = new Pokemon(
-		7, "Squirtle", "assets/images/Squirtle.png", 
+		7, "Squirtle", "assets/images/squirtle.png", 
+		"assets/images/squirtle-sprite.png",
 		["Water"], 0.5, 9.0, 
 		"Squirtle is a small Pokémon that resembles a light blue turtle.");
 
 	pikachu = new Pokemon(
-		25, "Pikachu", "assets/images/Pikachu.png", 
+		25, "Pikachu", "assets/images/pikachu.png", 
+		"assets/images/pikachu-sprite.png",
 		["Electric"], 0.4, 6.0, 
 		"Pikachu is a short, chubby rodent Pokémon.");
 
@@ -123,25 +131,6 @@ function addPokemans(map){
 	//add ??? entries for each undefined map entry (151-num defined)
 	addUnknownPokemans(map);
 }//addPokemans
-
-
-//call this loads of time for each entry you want
-function createListItem(data){
-	const id = data;
-
-	const listItem = document.createElement("li");
-	const button = document.createElement("button");
-
-	button.setAttribute("data-id", id);
-	button.classList.add("listbutton");
-	button.innerText = `${id}.`;
-	// button.addEventListener("click", updateCurrDetails);
-
-	listItem.appendChild(button);
-
-	return listItem;
-}//createListItem
-
 
 function addUnknownPokemans(map){
 
@@ -162,18 +151,43 @@ function addUnknownPokemans(map){
 }//addUnknownPokemon
 
 
+//call this loads of time for each entry you want
+function createListItem(data){
+	const id = data;
+
+	const listItem = document.createElement("li");
+	const button = document.createElement("button");
+
+	button.setAttribute("data-id", id);
+	button.classList.add("listbutton");
+	button.innerText = `${id}.`;
+	// button.addEventListener("click", updateCurrDetails);
+
+	listItem.appendChild(button);
+
+	return listItem;
+}//createListItem
+
+
+
 function updateCurrDetails(event){
 
-	let { image, id, name, type, weight, height, desc } = state;
+	let { image, sprite, id, name, type, weight, height, desc } = state;
 
 	const key = parseInt(event.target.dataset.id);
 
-	const { image: pImage, name: pName, id: pId, type: pType, weight: pWeight,
+	const selectedPokemon = state.pokemans.get(key);
+
+	const { image: pImage, sprite: pSprite, name: pName, id: pId, type: pType, weight: pWeight,
 			height: pHeight, description: pDesc }
-		= state.pokemans.get(key);
+		= selectedPokemon;
+
+	console.log(selectedPokemon);
 
 	image.src				= pImage;
-	image.alt    			= pName;
+	image.alt    			= `Image of ${pName}`;
+	sprite.src 				= pSprite;
+	sprite.alt              = `Sprite for ${pName}`;
 	id.innerText 			= pId;
 	name.innerText 			= pName; //placeholder for now
 	type.innerText 			= pType;
