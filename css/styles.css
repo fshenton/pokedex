@@ -5,7 +5,7 @@ html {
 
 /* WRAPPER --------------- */
 
-.wrapper {
+/*.wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -16,11 +16,12 @@ html {
 	text-align: center;
 	font-size: 2em;
 	color: var(--color__text);
-}
+}*/
 
 /* POKEDEX --------------- */
 
 .pokedex {
+	margin: 3rem 10% 0 10%;
 	display: inline-flex;
     width: 80vw;
     height: 80vh;
@@ -31,7 +32,7 @@ html {
 /* GLOSSARY --------------- */
 
 .glossary {
-	flex-basis: 24rem;
+	min-width: 24rem;
 	height: 100%;
 }
 
@@ -86,7 +87,11 @@ li:last-child button {
 /* DETAILS --------------- */
 
 
-
+.info { /*good enough for now*/
+	flex-shrink: 250px;
+	flex-grow: 1;
+	flex-basis: 500px;
+}
 
 
 .weight::after {
