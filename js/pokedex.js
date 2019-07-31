@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", init);
 class Pokemon {
 	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 	//#id 
-	constructor(id, name = "?????", sprite = "assets/images/placeholder.png",
+	constructor(id, name = "?????", sprite = "assets/images/unknown-sprite.png",
 		type = "???", weight = "?", height = "?", seen = 0, caught = 0,
 		image = "assets/images/placeholder.png", description = "???",
 		hp = 0 , attack = 0, defense = 0, spAttack = 0, spDefense = 0, 
