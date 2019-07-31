@@ -5,9 +5,12 @@ window.addEventListener("DOMContentLoaded", init);
 class Pokemon {
 	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 	//#id 
-	constructor(id, name = "???", sprite = "assets/images/placeholder.png",
-		type = "???", weight = "???", height = "???", seen = 0, caught = 0,
-		image = "assets/images/placeholder.png", description = "???"){
+	constructor(id, name = "?????", sprite = "assets/images/placeholder.png",
+		type = "???", weight = "?", height = "?", seen = 0, caught = 0,
+		image = "assets/images/placeholder.png", description = "???",
+		hp = "?" , attack = "?", defense = "?", special = "?", specialDefense = "?", 
+		speed = "?"
+		){
 		
 		this.id 			= id;
 		this.name 			= name;
@@ -19,6 +22,13 @@ class Pokemon {
 		this.caught 		= caught;
 		this.image 			= image;
 		this.description 	= description;
+		this.hp 			= hp;
+		this.attack			= attack;
+		this.defense 		= defense;
+		this.special		= special;
+		this.specialDefense = specialDefense;
+		this.speed 			= speed;
+		//TODO: could use arrays or similar to hold similar items? (info, stats etc.)
 	}
 	//TODO: update details function
 }
@@ -39,7 +49,14 @@ const state = {
 	seen: 			undefined,
 	caught:         undefined, 
 	image: 			undefined,
-	desc: 			undefined
+	desc: 			undefined,
+	hp: 			undefined,
+	attack:  		undefined,
+	defense:		undefined, 
+	special: 		undefined,
+	specialdefense: undefined,
+	speed:  		undefined
+	//TODO: use arrays or similar to hold similar items
 }
 
 function init(){
@@ -53,17 +70,23 @@ function init(){
 	// setUpUnknownPokemon(state); //used for filling ??? entries
 
 	//assign all of the needed dom elements to the state for later use
-	state.desclist 	= document.getElementById("infoList");
-	state.id 		= document.getElementById("id");
-	state.name 		= document.getElementById("name");
-	state.image 	= document.getElementById("image");
-	state.sprite 	= document.getElementById("sprite");
-	state.type 		= document.getElementById("type");
-	state.weight 	= document.getElementById("weight");
-	state.height 	= document.getElementById("height");
-	state.seen 		= document.getElementById("seen");
-	state.caught 	= document.getElementById("caught");
-	state.desc 		= document.getElementById("bio");
+	state.desclist 			= document.getElementById("infoList");
+	state.id 				= document.getElementById("id");
+	state.name 				= document.getElementById("name");
+	state.image 			= document.getElementById("image");
+	state.sprite 			= document.getElementById("sprite");
+	state.type 				= document.getElementById("type");
+	state.weight 			= document.getElementById("weight");
+	state.height 			= document.getElementById("height");
+	state.seen 				= document.getElementById("seen");
+	state.caught 			= document.getElementById("caught");
+	state.desc 				= document.getElementById("bio");
+	state.hp  				= document.getElementById("hp");
+	state.attack  			= document.getElementById("attack");
+	state.defense 			= document.getElementById("defense");
+	state.special			= document.getElementById("special");
+	state.specialdefense 	= document.getElementById("specialDefense");
+	state.speed  			= document.getElementById("speed");
 	
 
 	const list = document.getElementById("glosslist");
@@ -102,26 +125,30 @@ function addPokemans(map){
 	bulbasaur = new Pokemon(
 		1, "Bulbasaur",  "assets/images/bulbasaur-sprite.png", 
 		["Grass", "Poison"], 0.7, 6.9, 1, 1,
-		"assets/images/bulbasaur.png",
-		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.");
+		"assets/images/bulbasaur.png", 
+		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.",
+		45, 49, 49, 65, 65, 45);
 
 	charmander = new Pokemon(
 		4, "Charmander",  "assets/images/charmander-sprite.png",
 		["Fire"], 0.6, 8.5, 1, 1,
-		"assets/images/charmander.png",
-		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.");
+		"assets/images/charmander.png", 
+		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.",
+		39, 52, 43, 60, 50, 65);
 
 	squirtle = new Pokemon(
 		7, "Squirtle", "assets/images/squirtle-sprite.png",
 		["Water"], 0.5, 9.0, 1, 1,
 		"assets/images/squirtle.png", 
-		"Squirtle is a small Pokémon that resembles a light blue turtle.");
+		"Squirtle is a small Pokémon that resembles a light blue turtle.",
+		44, 48, 65, 50, 64, 43);
 
 	pikachu = new Pokemon(
 		25, "Pikachu", "assets/images/pikachu-sprite.png",
 		["Electric"], 0.4, 6.0, 5, 2,
 		"assets/images/pikachu.png", 
-		"Pikachu is a short, chubby rodent Pokémon.");
+		"Pikachu is a short, chubby rodent Pokémon.",
+		35, 55, 30, 50, 40, 90);
 
 
 
@@ -175,16 +202,19 @@ function createListItem(data){
 
 function updateCurrDetails(event){
 
-	let { id, name, sprite, type, weight, height, seen, caught, image, desc } 
+	let { id, name, sprite, type, weight, 
+		height, seen, caught, image, desc,
+		hp, attack, defense, special, specialdefense, speed } 
 		= state;
 
 	const key = parseInt(event.target.dataset.id);
-
 	const selectedPokemon = state.pokemans.get(key);
 
 	const { name: pName, id: pId, sprite: pSprite, type: pType, 
 			weight: pWeight, height: pHeight, seen: pSeen, 
-			caught: pCaught, image: pImage, description: pDesc }
+			caught: pCaught, image: pImage, description: pDesc,
+			hp: pHp, attack: pAttack, defense: pDefense, 
+			special: pSpecial, specialDefense: pSpecialDefense, speed: pSpeed }
 		= selectedPokemon;
 
 	console.log(selectedPokemon);
@@ -201,6 +231,12 @@ function updateCurrDetails(event){
 	image.src				= pImage;
 	image.alt    			= `Image of ${pName}`;
 	desc.innerText 			= pDesc;
+	hp.value 				= pHp;
+	attack.value 			= pAttack;
+	defense.value 			= pDefense;
+	special.value 			= pSpecial;
+	specialDefense.value 	= pSpecialDefense;
+	speed.value 			= pSpeed;
 
 	updateCurrSelection(event);
 }
