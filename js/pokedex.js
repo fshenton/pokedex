@@ -8,8 +8,8 @@ class Pokemon {
 	constructor(id, name = "?????", sprite = "assets/images/placeholder.png",
 		type = "???", weight = "?", height = "?", seen = 0, caught = 0,
 		image = "assets/images/placeholder.png", description = "???",
-		hp = "?" , attack = "?", defense = "?", special = "?", specialDefense = "?", 
-		speed = "?"
+		hp = 0 , attack = 0, defense = 0, spAttack = 0, spDefense = 0, 
+		speed = 0
 		){
 		
 		this.id 			= id;
@@ -25,8 +25,8 @@ class Pokemon {
 		this.hp 			= hp;
 		this.attack			= attack;
 		this.defense 		= defense;
-		this.special		= special;
-		this.specialDefense = specialDefense;
+		this.spAttack		= spAttack;
+		this.spDefense 		= spDefense;
 		this.speed 			= speed;
 		//TODO: could use arrays or similar to hold similar items? (info, stats etc.)
 	}
@@ -53,8 +53,8 @@ const state = {
 	hp: 			undefined,
 	attack:  		undefined,
 	defense:		undefined, 
-	special: 		undefined,
-	specialdefense: undefined,
+	spAttack: 		undefined,
+	spDefense: 		undefined,
 	speed:  		undefined
 	//TODO: use arrays or similar to hold similar items
 }
@@ -84,8 +84,8 @@ function init(){
 	state.hp  				= document.getElementById("hp");
 	state.attack  			= document.getElementById("attack");
 	state.defense 			= document.getElementById("defense");
-	state.special			= document.getElementById("special");
-	state.specialdefense 	= document.getElementById("specialDefense");
+	state.spAttack			= document.getElementById("spAttack");
+	state.spDefense 		= document.getElementById("spDefense");
 	state.speed  			= document.getElementById("speed");
 	
 
@@ -204,7 +204,7 @@ function updateCurrDetails(event){
 
 	let { id, name, sprite, type, weight, 
 		height, seen, caught, image, desc,
-		hp, attack, defense, special, specialdefense, speed } 
+		hp, attack, defense, spAttack, spDefense, speed } 
 		= state;
 
 	const key = parseInt(event.target.dataset.id);
@@ -214,29 +214,29 @@ function updateCurrDetails(event){
 			weight: pWeight, height: pHeight, seen: pSeen, 
 			caught: pCaught, image: pImage, description: pDesc,
 			hp: pHp, attack: pAttack, defense: pDefense, 
-			special: pSpecial, specialDefense: pSpecialDefense, speed: pSpeed }
+			spAttack: pSpAttack, spDefense: pSpDefense, speed: pSpeed }
 		= selectedPokemon;
 
 	console.log(selectedPokemon);
 
-	id.innerText 			= pId;
-	name.innerText 			= pName; 
-	sprite.src 				= pSprite;
-	sprite.alt              = `Sprite for ${pName}`;
-	type.innerText 			= pType;
-	weight.innerText 		= pWeight;
-	height.innerText 		= pHeight;
-	seen.innerText			= pSeen;
-	caught.innerText   		= pCaught;
-	image.src				= pImage;
-	image.alt    			= `Image of ${pName}`;
-	desc.innerText 			= pDesc;
-	hp.value 				= pHp;
-	attack.value 			= pAttack;
-	defense.value 			= pDefense;
-	special.value 			= pSpecial;
-	specialDefense.value 	= pSpecialDefense;
-	speed.value 			= pSpeed;
+	id.innerText 				= pId;
+	name.innerText 				= pName; 
+	sprite.src 					= pSprite;
+	sprite.alt              	= `Sprite for ${pName}`;
+	type.innerText 				= pType;
+	weight.innerText 			= pWeight;
+	height.innerText 			= pHeight;
+	seen.innerText				= pSeen;
+	caught.innerText   			= pCaught;
+	image.src					= pImage;
+	image.alt    				= `Image of ${pName}`;
+	desc.innerText 				= pDesc;
+	hp.value 					= pHp;
+	attack.value 				= pAttack;
+	defense.value 				= pDefense;
+	spAttack.value 				= pSpAttack;
+	spDefense.value 			= pSpDefense;
+	speed.value 				= pSpeed;
 
 	updateCurrSelection(event);
 }

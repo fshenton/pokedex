@@ -96,3 +96,29 @@ html {
 	content: "m";
 }
 
+.stats::after {
+	content: attr(value);
+	top: -1em;
+	position: relative;
+}
+
+/*.stats {
+	display: block;
+	margin-top: 0.62em;
+}*/
+
+.stat {
+	margin-top: 0.62em;
+}
+
+.stat .stat-label {
+	display: inline-block;
+}
+
+.stat .stats {
+	vertical-align: middle;
+}
+
+.stats {
+	margin-left: 1em;
+}

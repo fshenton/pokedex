@@ -41,18 +41,46 @@
 				</dl>
 			<section id="stats" class="info-section">
 				<h2>Stats</h2>
-				<meter id="hp" class="stats hp" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
-
-				<meter id="attack" class="stats attack" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
-
-				<meter id="defense" class="stats defense" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
-
-				<meter id="special" class="stats special" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
-
-				<meter id="specialDefense" class="stats special-defense" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
-
-				<meter id="speed" class="stats speed" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
+				<table class="stats-list">
+					<tr class="stat">
+						<th class="stat-label">HP:</th> 
+						<td>
+							<meter id="hp" class="stats hp" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
+						</td>
+					</tr>
+					<tr class="stat">
+						<th class="stat-label">Attack:</th> 
+						<td>
+							<meter id="attack" class="stats attack" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
+						</td>
+					</tr>
+					<tr class="stat">
+						<th class="stat-label">Defense:</th>
+						<td>
+							<meter id="defense" class="stats defense" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
+						</td>
+					</tr>
+					<tr class="stat">
+						<th class="stat-label">Sp. Attack:</th>
+						<td>
+							<meter id="spAttack" class="stats sp-attack" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
+						</td>
+					</tr>
+					<tr class="stat">
+						<th class="stat-label">Sp. Defense:</th>
+						<td>
+							<meter id="spDefense" class="stats sp-defense" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
+						</td>
+					</tr>
+					<tr class="stat">
+						<th class="stat-label">Speed:</th>
+						<td>
+							<meter id="speed" class="stats speed" min="0" max="100" low="33" high="45" optimum="65" value="0"></meter>
+						</td>
+					</tr>
+				</table>
 			</section>
+
 			<section id="types" class="info-section">
 				<h2>Types</h2>
 				<p id="type"></p>
