@@ -6,7 +6,7 @@ class Pokemon {
 	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 	//#id 
 	constructor(id, name = "?????", sprite = "assets/images/unknown-sprite.png",
-		types = "???", weight = "?", height = "?", seen = 0, caught = 0,
+		types = ["???", "???"], weight = "?", height = "?", seen = 0, caught = 0,
 		image = "assets/images/placeholder.png", description = "???",
 		hp = 0 , attack = 0, defense = 0, spAttack = 0, spDefense = 0, 
 		speed = 0
@@ -43,7 +43,7 @@ const state = {
 	id: 			undefined,
 	name:			undefined,
 	sprite: 		undefined,
-	types: 			undefined,
+	types: 			[],
 	weight: 		undefined,
 	height: 		undefined,
 	seen: 			undefined,
@@ -75,7 +75,8 @@ function init(){
 	state.name 				= document.getElementById("name");
 	state.image 			= document.getElementById("image");
 	state.sprite 			= document.getElementById("sprite");
-	state.types 			= document.getElementById("types");
+	state.types[0] 			= document.getElementById("type1");
+	state.types[1]			= document.getElementById("type2");
 	state.weight 			= document.getElementById("weight");
 	state.height 			= document.getElementById("height");
 	state.seen 				= document.getElementById("seen");
@@ -131,21 +132,21 @@ function addPokemans(map){
 
 	charmander = new Pokemon(
 		4, "Charmander",  "assets/images/charmander-sprite.png",
-		["Fire"], 0.6, 8.5, 1, 1,
+		["Fire", ""], 0.6, 8.5, 1, 1,
 		"assets/images/charmander.png", 
 		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.",
 		39, 52, 43, 60, 50, 65);
 
 	squirtle = new Pokemon(
 		7, "Squirtle", "assets/images/squirtle-sprite.png",
-		["Water"], 0.5, 9.0, 1, 1,
+		["Water", ""], 0.5, 9.0, 1, 1,
 		"assets/images/squirtle.png", 
 		"Squirtle is a small Pokémon that resembles a light blue turtle.",
 		44, 48, 65, 50, 64, 43);
 
 	pikachu = new Pokemon(
 		25, "Pikachu", "assets/images/pikachu-sprite.png",
-		["Electric"], 0.4, 6.0, 5, 2,
+		["Electric", ""], 0.4, 6.0, 5, 2,
 		"assets/images/pikachu.png", 
 		"Pikachu is a short, chubby rodent Pokémon.",
 		35, 55, 30, 50, 40, 90);
@@ -223,21 +224,8 @@ function updateCurrDetails(event){
 	name.innerText 				= pName; 
 	sprite.src 					= pSprite;
 	sprite.alt              	= `Sprite for ${pName}`;
-
-
-	//TODO: Put in a function to clean this up a bit
-	//clear li's first if they exist
-	while (types.childNodes[2]) {
-    	types.removeChild(types.childNodes[2]);
-	}
-
-	//number of li's === number of types
-	for(let t of pTypes){
-		let li = document.createElement("li");
-		li.innerText = t;
-		types.appendChild(li);
-	}
-	
+	types[0].innerText			= pTypes[0];
+	types[1].innerText			= pTypes[1];	
 	weight.innerText 			= pWeight;
 	height.innerText 			= pHeight;
 	seen.innerText				= pSeen;

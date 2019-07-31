@@ -63,6 +63,7 @@ html {
     
 /* DETAILS --------------- */
 
+/* BASIC INFO ---------------*/
 
 .info { /*good enough for now*/
 	flex-shrink: 250px;
@@ -73,14 +74,6 @@ html {
 .infoheader {
 	display: flex;
 
-}
-
-.infoheader .name {
-	
-}
-
-.infoheader .sprite {
-	
 }
 
 .info-list .value, 
@@ -96,16 +89,13 @@ html {
 	content: "m";
 }
 
+/* STATS --------------------- */
+
 .stats::after {
 	content: attr(value);
 	top: -1em;
 	position: relative;
 }
-
-/*.stats {
-	display: block;
-	margin-top: 0.62em;
-}*/
 
 .stat {
 	margin-top: 0.62em;
@@ -121,4 +111,10 @@ html {
 
 .stats {
 	margin-left: 1em;
+}
+
+/* TYPES ----------------------*/
+
+.resistance .res-label {
+	display: inline-block;
 }
