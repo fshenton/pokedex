@@ -6,7 +6,7 @@ class Pokemon {
 	//TODO: would be nice to prevent people from easily changing the variables :thinking: 
 	//#id 
 	constructor(id, name = "?????", sprite = "assets/images/unknown-sprite.png",
-		type = "???", weight = "?", height = "?", seen = 0, caught = 0,
+		types = "???", weight = "?", height = "?", seen = 0, caught = 0,
 		image = "assets/images/placeholder.png", description = "???",
 		hp = 0 , attack = 0, defense = 0, spAttack = 0, spDefense = 0, 
 		speed = 0
@@ -15,7 +15,7 @@ class Pokemon {
 		this.id 			= id;
 		this.name 			= name;
 		this.sprite 		= sprite;
-		this.type 			= type;
+		this.types 			= types;
 		this.weight 		= weight;
 		this.height 		= height;
 		this.seen   		= seen;
@@ -43,7 +43,7 @@ const state = {
 	id: 			undefined,
 	name:			undefined,
 	sprite: 		undefined,
-	type: 			undefined,
+	types: 			undefined,
 	weight: 		undefined,
 	height: 		undefined,
 	seen: 			undefined,
@@ -75,7 +75,7 @@ function init(){
 	state.name 				= document.getElementById("name");
 	state.image 			= document.getElementById("image");
 	state.sprite 			= document.getElementById("sprite");
-	state.type 				= document.getElementById("type");
+	state.types 			= document.getElementById("types");
 	state.weight 			= document.getElementById("weight");
 	state.height 			= document.getElementById("height");
 	state.seen 				= document.getElementById("seen");
@@ -202,7 +202,7 @@ function createListItem(data){
 
 function updateCurrDetails(event){
 
-	let { id, name, sprite, type, weight, 
+	let { id, name, sprite, types, weight, 
 		height, seen, caught, image, desc,
 		hp, attack, defense, spAttack, spDefense, speed } 
 		= state;
@@ -210,7 +210,7 @@ function updateCurrDetails(event){
 	const key = parseInt(event.target.dataset.id);
 	const selectedPokemon = state.pokemans.get(key);
 
-	const { name: pName, id: pId, sprite: pSprite, type: pType, 
+	const { name: pName, id: pId, sprite: pSprite, types: pTypes, 
 			weight: pWeight, height: pHeight, seen: pSeen, 
 			caught: pCaught, image: pImage, description: pDesc,
 			hp: pHp, attack: pAttack, defense: pDefense, 
@@ -223,7 +223,21 @@ function updateCurrDetails(event){
 	name.innerText 				= pName; 
 	sprite.src 					= pSprite;
 	sprite.alt              	= `Sprite for ${pName}`;
-	type.innerText 				= pType;
+
+
+	//TODO: Put in a function to clean this up a bit
+	//clear li's first if they exist
+	while (types.childNodes[2]) {
+    	types.removeChild(types.childNodes[2]);
+	}
+
+	//number of li's === number of types
+	for(let t of pTypes){
+		let li = document.createElement("li");
+		li.innerText = t;
+		types.appendChild(li);
+	}
+	
 	weight.innerText 			= pWeight;
 	height.innerText 			= pHeight;
 	seen.innerText				= pSeen;
