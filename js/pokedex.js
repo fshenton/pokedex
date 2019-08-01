@@ -117,13 +117,13 @@ function init(){
 	
 	const pokemans = state.pokemans = new Map();
 	
-	const list = document.getElementById("glosslist");
+	const list = document.getElementById("pokelist");
 
 	addPokemans(pokemans);
 	calculateResistances(pokemans);
 	addUnknownPokemans(pokemans);
 
-	//create 151 li elements within the glossary ul
+	//create 151 li elements within the pokelist ul
 	for(let count = 1; count < 152; count++){
 		const listItem = createListItem(count);
 		list.appendChild(listItem);

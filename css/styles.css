@@ -16,18 +16,18 @@ html {
 
 /* GLOSSARY --------------- */
 
-.glossary {
+.pokenav {
 	min-width: 24rem;
 	height: 100%;
 }
 
-.glossary h2 {
+.pokenav h2 {
 	padding-top: 10px;
 	padding-left: 10%;
 	margin-bottom: 10px;
 }
 
-.glosslist {
+.pokelist {
 	display: flex;
 	height: 100%;
     flex-direction: column;
