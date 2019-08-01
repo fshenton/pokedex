@@ -166,7 +166,9 @@ function addPokemans(map){
 		["assets/images/bulbasaur.png", "assets/images/squirtle.png",
 		"assets/images/charmander.png", "assets/images/pikachu.png"], 
 		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.",
-		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.",
+		`Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches. It has red eyes with white pupils, pointed, ear-like structures on top of its head, and a short, blunt snout with a wide mouth. A pair of small, pointed teeth are visible in the upper jaw when its mouth is open. Each of its thick legs ends with three sharp claws. On its back is a green plant bulb, which is grown from a seed planted there at birth. The bulb provides it with energy through photosynthesis as well as from the nutrient-rich seeds contained within.
+		
+		As mentioned in the anime, starter Pokémon are raised by Breeders to be distributed to new Trainers. Having been domesticated from birth, Bulbasaur is regarded as both a rare and well-behaved Pokémon. It is known to be extremely loyal, even after long-term abandonment. Bulbasaur has also shown itself to be an excellent caretaker, even having a special technique called the "Bulba-by." To perform this technique, Bulbasaur uses its vines to pick up a young Pokémon and soothingly rocks it in the air.`,
 		45, 49, 49, 65, 65, 45, [], [], [], [], []);
 
 	charmander = new Pokemon(
