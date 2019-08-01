@@ -7,7 +7,7 @@ class Pokemon {
 	//#id 
 	constructor(id, name = "?????", sprite = "assets/images/unknown-sprite.png",
 		types = ["???", "???"], weight = "?", height = "?", seen = 0, caught = 0,
-		image = "assets/images/placeholder.png", description = "???",
+		images = ["assets/images/placeholder.png"], description = "???",
 		hp = 0 , attack = 0, defense = 0, spAttack = 0, spDefense = 0, 
 		speed = 0, immune = ["???"], resistant = ["???"], normal = ["???"],
 		weak = ["???"], superWeak = ["???"]
@@ -21,7 +21,7 @@ class Pokemon {
 		this.height 		= height;
 		this.seen   		= seen;
 		this.caught 		= caught;
-		this.image 			= image;
+		this.images 		= images;
 		this.description 	= description;
 		this.hp 			= hp;
 		this.attack			= attack;
@@ -65,7 +65,7 @@ const state = {
 	height: 		undefined,
 	seen: 			undefined,
 	caught:         undefined, 
-	image: 			undefined,
+	image:  		undefined,
 	desc: 			undefined,
 	hp: 			undefined,
 	attack:  		undefined,
@@ -152,7 +152,8 @@ function addPokemans(map){
 	bulbasaur = new Pokemon(
 		1, "Bulbasaur",  "assets/images/bulbasaur-sprite.png", 
 		["Grass", "Poison"], 0.7, 6.9, 1, 1,
-		"assets/images/bulbasaur.png", 
+		["assets/images/bulbasaur.png", "assets/images/squirtle.png",
+		"assets/images/charmander.png", "assets/images/pikachu.png"], 
 		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.",
 		45, 49, 49, 65, 65, 45, [], [], [], [], []);
 
@@ -274,7 +275,7 @@ function updateCurrDetails(event){
 
 	const { name: pName, id: pId, sprite: pSprite, types: pTypes, 
 			weight: pWeight, height: pHeight, seen: pSeen, 
-			caught: pCaught, image: pImage, description: pDesc,
+			caught: pCaught, images: pImage, description: pDesc,
 			hp: pHp, attack: pAttack, defense: pDefense, 
 			spAttack: pSpAttack, spDefense: pSpDefense, speed: pSpeed,
 			immune: pImmune, resistant: pResistant, normal: pNormal,
@@ -293,7 +294,7 @@ function updateCurrDetails(event){
 	height.innerText 			= pHeight;
 	seen.innerText				= pSeen;
 	caught.innerText   			= pCaught;
-	image.src					= pImage;
+	image.src					= pImage[0];
 	image.alt    				= `Image of ${pName}`;
 	desc.innerText 				= pDesc;
 	hp.value 					= pHp;
