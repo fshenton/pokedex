@@ -66,6 +66,7 @@ const state = {
 	seen: 			undefined,
 	caught:         undefined, 
 	image:  		undefined,
+	imageIndex:   	undefined, 
 	desc: 			undefined,
 	hp: 			undefined,
 	attack:  		undefined,
@@ -109,6 +110,7 @@ function init(){
 	state.weak 				= document.getElementById("weak");
 	state.superWeak		    = document.getElementById("superWeak");
 	
+	state.imageIndex = 0;
 	
 	const pokemans = state.pokemans = new Map();
 	
@@ -139,6 +141,12 @@ function init(){
 		//add event listener that will update pokemon details when button clicked
 		listButton.addEventListener("click", updateCurrDetails);
 	}
+
+	const prev = document.getElementById("prev");
+	const next = document.getElementById("next");
+
+	prev.addEventListener("click", changeImage);
+	next.addEventListener("click", changeImage);
 
 	console.log(state);
 }//init
@@ -265,7 +273,7 @@ function createListItem(data){
 function updateCurrDetails(event){
 
 	let { id, name, sprite, types, weight, 
-		height, seen, caught, image, desc,
+		height, seen, caught, image, imageIndex, desc,
 		hp, attack, defense, spAttack, spDefense, speed,
 		immune, resistant, normal, weak, superWeak } 
 		= state;
@@ -294,7 +302,7 @@ function updateCurrDetails(event){
 	height.innerText 			= pHeight;
 	seen.innerText				= pSeen;
 	caught.innerText   			= pCaught;
-	image.src					= pImage[0];
+	image.src					= pImage[imageIndex];
 	image.alt    				= `Image of ${pName}`;
 	desc.innerText 				= pDesc;
 	hp.value 					= pHp;
@@ -342,3 +350,24 @@ function updateCurrSelection(event){
 	//update the new buttons class so that it's styled appropriately
 	state.currSelection.classList.add("selected");
 }
+
+function changeImage(event){
+	let index = state.imageIndex;
+	console.log(index);
+
+	event.target.id === "prev" ? index -= 1 : index += 1;
+
+	if(index < 0) index = 3;
+	else if(index > 3) index = 0;
+
+	const currPokemonId = state.currSelection.dataset.id;
+
+	const currPokemon = state.pokemans.get(parseInt(currPokemonId));
+
+	let currImage = state.image;
+
+	currImage.src = currPokemon.images[index];
+
+	state.imageIndex = index;
+
+}//changeImage
