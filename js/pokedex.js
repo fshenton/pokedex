@@ -104,8 +104,8 @@ function init(){
 	state.hp  				= document.getElementById("hp");
 	state.attack  			= document.getElementById("attack");
 	state.defense 			= document.getElementById("defense");
-	state.spAttack			= document.getElementById("spAttack");
-	state.spDefense 		= document.getElementById("spDefense");
+	state.spAttack			= document.getElementById("sp-attack");
+	state.spDefense 		= document.getElementById("sp-defense");
 	state.speed  			= document.getElementById("speed");
 	state.immune			= document.getElementById("immune");
 	state.resistant			= document.getElementById("resistant");
