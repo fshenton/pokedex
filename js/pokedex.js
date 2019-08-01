@@ -7,7 +7,7 @@ class Pokemon {
 	//#id 
 	constructor(id, name = "?????", sprite = "assets/images/unknown-sprite.png",
 		types = ["???", "???"], weight = "?", height = "?", seen = 0, caught = 0,
-		images = ["assets/images/placeholder.png"], description = "???",
+		images = ["assets/images/placeholder.png"], bio = "???", story = "???",
 		hp = 0 , attack = 0, defense = 0, spAttack = 0, spDefense = 0, 
 		speed = 0, immune = ["???"], resistant = ["???"], normal = ["???"],
 		weak = ["???"], superWeak = ["???"]
@@ -22,7 +22,8 @@ class Pokemon {
 		this.seen   		= seen;
 		this.caught 		= caught;
 		this.images 		= images;
-		this.description 	= description;
+		this.bio 			= bio;
+		this.story 			= story;
 		this.hp 			= hp;
 		this.attack			= attack;
 		this.defense 		= defense;
@@ -67,7 +68,8 @@ const state = {
 	caught:         undefined, 
 	image:  		undefined,
 	imageIndex:   	undefined, 
-	desc: 			undefined,
+	bio: 			undefined,
+	story:  		undefined,
 	hp: 			undefined,
 	attack:  		undefined,
 	defense:		undefined, 
@@ -97,7 +99,8 @@ function init(){
 	state.height 			= document.getElementById("height");
 	state.seen 				= document.getElementById("seen");
 	state.caught 			= document.getElementById("caught");
-	state.desc 				= document.getElementById("bio");
+	state.bio 				= document.getElementById("bio-text");
+	state.story 			= document.getElementById("story-text");
 	state.hp  				= document.getElementById("hp");
 	state.attack  			= document.getElementById("attack");
 	state.defense 			= document.getElementById("defense");
@@ -163,26 +166,33 @@ function addPokemans(map){
 		["assets/images/bulbasaur.png", "assets/images/squirtle.png",
 		"assets/images/charmander.png", "assets/images/pikachu.png"], 
 		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.",
+		"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches.",
 		45, 49, 49, 65, 65, 45, [], [], [], [], []);
 
 	charmander = new Pokemon(
 		4, "Charmander",  "assets/images/charmander-sprite.png",
 		["Fire", ""], 0.6, 8.5, 1, 1,
-		"assets/images/charmander.png", 
+		["assets/images/charmander.png", "assets/images/squirtle.png",
+		"assets/images/bulbasaur.png", "assets/images/pikachu.png"],  
+		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.",
 		"Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.",
 		39, 52, 43, 60, 50, 65, [], [], [], [], []);
 
 	squirtle = new Pokemon(
 		7, "Squirtle", "assets/images/squirtle-sprite.png",
 		["Water", ""], 0.5, 9.0, 1, 1,
-		"assets/images/squirtle.png", 
+		["assets/images/squirtle.png", "assets/images/bulbasaur.png",
+		"assets/images/charmander.png", "assets/images/pikachu.png"], 
+		"Squirtle is a small Pokémon that resembles a light blue turtle.",
 		"Squirtle is a small Pokémon that resembles a light blue turtle.",
 		44, 48, 65, 50, 64, 43, [], [], [], [], []);
 
 	pikachu = new Pokemon(
 		25, "Pikachu", "assets/images/pikachu-sprite.png",
 		["Electric", ""], 0.4, 6.0, 5, 2,
-		"assets/images/pikachu.png", 
+		["assets/images/pikachu.png", "assets/images/squirtle.png",
+		"assets/images/charmander.png", "assets/images/bulbasaur.png"], 
+		"Pikachu is a short, chubby rodent Pokémon.",
 		"Pikachu is a short, chubby rodent Pokémon.",
 		35, 55, 30, 50, 40, 90, [], [], [], [], []);
 
@@ -273,7 +283,7 @@ function createListItem(data){
 function updateCurrDetails(event){
 
 	let { id, name, sprite, types, weight, 
-		height, seen, caught, image, imageIndex, desc,
+		height, seen, caught, image, imageIndex, bio, story,
 		hp, attack, defense, spAttack, spDefense, speed,
 		immune, resistant, normal, weak, superWeak } 
 		= state;
@@ -283,7 +293,7 @@ function updateCurrDetails(event){
 
 	const { name: pName, id: pId, sprite: pSprite, types: pTypes, 
 			weight: pWeight, height: pHeight, seen: pSeen, 
-			caught: pCaught, images: pImage, description: pDesc,
+			caught: pCaught, images: pImage, bio: pBio, story: pStory,
 			hp: pHp, attack: pAttack, defense: pDefense, 
 			spAttack: pSpAttack, spDefense: pSpDefense, speed: pSpeed,
 			immune: pImmune, resistant: pResistant, normal: pNormal,
@@ -302,9 +312,10 @@ function updateCurrDetails(event){
 	height.innerText 			= pHeight;
 	seen.innerText				= pSeen;
 	caught.innerText   			= pCaught;
-	image.src					= pImage[imageIndex];
+	image.src					= pImage[0];
 	image.alt    				= `Image of ${pName}`;
-	desc.innerText 				= pDesc;
+	bio.innerText				= pBio;
+	story.innerText				= pStory;
 	hp.value 					= pHp;
 	attack.value 				= pAttack;
 	defense.value 				= pDefense;
