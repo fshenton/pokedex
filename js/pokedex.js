@@ -309,7 +309,15 @@ function updateCurrDetails(event){
 	sprite.src 					= pSprite;
 	sprite.alt              	= `Sprite for ${pName}`;
 	types[0].innerText			= pTypes[0];
-	types[1].innerText			= pTypes[1];	
+	
+	//Handle showing 1 or 2 types depending on pokemon
+	if(pTypes[1]!==""){
+		types[1].innerText 		= `/ ${pTypes[1]}`;	
+	} 
+	else{
+		types[1].innerText 		= "";
+	}
+	
 	weight.innerText 			= pWeight;
 	height.innerText 			= pHeight;
 	seen.innerText				= pSeen;
