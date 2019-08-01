@@ -3,13 +3,21 @@ html {
 	background-color: var(--color__imagebg);
 }
 
+/* HEADER ----------------*/
+
+.page-title {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
 /* POKEDEX --------------- */
 
 .pokedex {
-	margin: 3rem 10% 0 10%;
-	display: inline-flex;
-    width: 80vw;
+	display: flex;
+	width: 80vw;
     height: 80vh;
+	margin: auto;
     background-color: var(--color__pokedexbody);
 }
 
@@ -17,14 +25,8 @@ html {
 /* GLOSSARY --------------- */
 
 .pokenav {
-	min-width: 24rem;
+	flex: 1 1 16.7%;
 	height: 100%;
-}
-
-.pokenav h2 {
-	padding-top: 10px;
-	padding-left: 10%;
-	margin-bottom: 10px;
 }
 
 .pokelist {
@@ -37,9 +39,9 @@ html {
 
 .listbutton {
 	width: 100%;
-	padding: 0.31em 0 0.31em 0.62em;
+	padding: 0.62em;
 	text-align: left;
-	transition: font-size 0.5s;
+	transition: font-size 0.2s;
 	background-color: #ddd;
 }
 
@@ -57,18 +59,18 @@ html {
 }
 
 .selected {
-	font-size: 3em;
-	transition: font-size 0.5s;
+	font-size: 1.8em;
+	transition: font-size 0.2s;
 }
+
     
-/* DETAILS --------------- */
+/* INFO1 --------------- */
 
 /* BASIC INFO ---------------*/
 
-.info { /*good enough for now*/
-	flex-shrink: 250px;
-	flex-grow: 1;
-	flex-basis: 500px;
+.info1 { /*good enough for now*/
+	flex: 2 33.3%;
+	flex-wrap: wrap;
 }
 
 .infoheader {
@@ -124,6 +126,12 @@ td {
 	padding-left: 1.62em;
 }
 
+
+/* INFO2 ------------------*/
+
+.info2 {
+	flex: 3 50%;
+}
 
 /* IMAGES ------------------*/
 
